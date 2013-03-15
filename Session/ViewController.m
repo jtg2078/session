@@ -15,6 +15,8 @@
 @property (nonatomic, strong) NSFetchedResultsController *frc;
 @property (nonatomic, weak) NSManagedObjectContext *context;
 @property (nonatomic, strong) NSDateFormatter *df;
+@property (nonatomic, strong) Event *currentEvent;
+@property (nonatomic, assign) CFAbsoluteTime currentEventStartTime;
 @end
 
 @implementation ViewController
@@ -118,7 +120,9 @@
 
 - (void)loadRelativePath:(NSString *)path
 {
-    NSString *root = usingProduction ? @"http://pda4.msg.nat.gov.tw/" : @"http://emsgmobile.miniasp.com.tw/";
+    NSString *root = usingProduction ? @"http://pda4.msg.nat.gov.tw/" :
+        @"http://emsgmobile.test.demo2.miniasp.com.tw/";
+
     NSURL *url = [NSURL URLWithString:path relativeToURL:[NSURL URLWithString:root]];
     
     [self.myWebView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -139,6 +143,23 @@
     
     if(error)
         NSLog(@"error while saving Event: %@", error.description);
+    
+    self.currentEventStartTime = CFAbsoluteTimeGetCurrent();
+    self.currentEvent = e;
+}
+
+- (void)updateCurrentEventLoadingTime
+{
+    if(self.currentEvent)
+    {
+        CFAbsoluteTime diff = CFAbsoluteTimeGetCurrent() - self.currentEventStartTime;
+        self.currentEvent.loadTime = @(diff);
+        NSError *error = nil;
+        [self.context save:&error];
+        
+        if(error)
+            NSLog(@"error while saving Event: %@", error.description);
+    }
 }
 
 - (NSString *)convertToRelativeTime:(NSDate *)date
@@ -201,6 +222,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     self.myIndicator.hidden = YES;
+    [self updateCurrentEventLoadingTime];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
@@ -258,11 +280,14 @@
     eventCell.content = event.content;
     eventCell.date = [self convertToReadableTime:event.timestamp];
     eventCell.contentHeight = event.height.floatValue;
+    if(event.loadTime)
+        eventCell.loadTime = [NSString stringWithFormat:@"%f", event.loadTime.floatValue];
+    
+    [eventCell setNeedsDisplay];
 }
 
 - (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"wtf");
 	return YES;
 }
 

@@ -54,6 +54,17 @@
     [self.date drawAtPoint:p
                   withFont:[UIFont systemFontOfSize:10]];
     
+    // loading time
+    if(self.loadTime)
+    {
+        p.x = 270;
+        p.y = 2;
+        [self.loadTime drawAtPoint:p
+                          withFont:[UIFont systemFontOfSize:10]];
+    }
+    
+    
+    
     // content
     rect.origin.x = 10;
     rect.origin.y = 15;

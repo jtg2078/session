@@ -42,6 +42,7 @@
 		9648E51B16D3276900758664 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9648E51C16D3276900758664 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9648E51F16D3276900758664 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		969C646516F31B6C00C70E72 /* Model 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Model 2.xcdatamodel"; sourceTree = "<group>"; };
 		96CB4BCB16D32CEA0001091C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		96CB4BCE16D32DB80001091C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		96CB4BD016D32E480001091C /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
@@ -342,6 +343,7 @@
 		96CB4BCD16D32DB80001091C /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				969C646516F31B6C00C70E72 /* Model 2.xcdatamodel */,
 				96CB4BCE16D32DB80001091C /* Model.xcdatamodel */,
 			);
 			currentVersion = 96CB4BCE16D32DB80001091C /* Model.xcdatamodel */;

@@ -14,5 +14,6 @@
 @dynamic timestamp;
 @dynamic content;
 @dynamic height;
+@dynamic loadTime;
 
 @end

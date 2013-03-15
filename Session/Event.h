@@ -15,5 +15,6 @@
 @property (nonatomic, retain) NSDate * timestamp;
 @property (nonatomic, retain) NSString * content;
 @property (nonatomic, retain) NSNumber * height;
+@property (nonatomic, retain) NSNumber * loadTime;
 
 @end

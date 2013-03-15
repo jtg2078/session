@@ -11,8 +11,9 @@
 
 @interface EventCell : FastCell
 
-@property (nonatomic, retain) NSString * date;
-@property (nonatomic, retain) NSString * content;
+@property (nonatomic, strong) NSString * date;
+@property (nonatomic, strong) NSString * content;
+@property (nonatomic, strong) NSString * loadTime;
 @property (nonatomic, assign) CGFloat contentHeight;
 
 + (CGFloat)heightForText:(NSString *)text;
