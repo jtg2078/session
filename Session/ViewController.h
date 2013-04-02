@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface ViewController : UIViewController <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
+@interface ViewController : UIViewController <UIWebViewDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate, CLLocationManagerDelegate, UIAlertViewDelegate>
 {
     BOOL usingProduction;
 }
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (strong, nonatomic) IBOutlet UIView *myHeaderView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *myIndicator;
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) NSString *currentAreaCode;
 
 - (IBAction)home:(id)sender;
 - (IBAction)user:(id)sender;
